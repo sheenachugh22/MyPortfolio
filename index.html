@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sheena Tandon — AI creative automation leadership, human-in-the-loop products, and delivery operations automations." />
+  <title>Sheena Tandon — AI &amp; Creative Automation Leadership</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #0a0e14;
+      --bg-panel: #121822;
+      --bg-elevated: #1a2230;
+      --border: rgba(148, 163, 184, 0.12);
+      --text: #e8edf5;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --accent-2: #a78bfa;
+      --radius: 14px;
+      --max: 1120px;
+      --font-sans: "Outfit", system-ui, sans-serif;
+      --font-display: "Fraunces", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg-deep);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(167, 139, 250, 0.06), transparent),
+        radial-gradient(ellipse 50% 30% at 0% 80%, rgba(56, 189, 248, 0.05), transparent);
+      background-size: 48px 48px, 48px 48px, auto, auto, auto;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip:focus {
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      padding: 0.5rem 1rem;
+      background: var(--bg-elevated);
+      border-radius: 8px;
+      z-index: 100;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.25rem 2.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    header.site {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 2.5rem 0 2.75rem;
+      border-top: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (min-width: 880px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+        gap: 2.5rem 3rem;
+      }
+    }
+
+    .hero-copy {
+      min-width: 0;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.2vw, 3.15rem);
+      font-weight: 600;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      max-width: 34ch;
+    }
+
+    .hero h1 .hl {
+      font-style: italic;
+      background: linear-gradient(120deg, #7dd3fc 0%, #a78bfa 45%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-lead {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      max-width: 38rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 880px) {
+      .hero-lead {
+        max-width: none;
+      }
+    }
+
+    .hero-aside {
+      position: relative;
+      border-radius: calc(var(--radius) + 6px);
+      padding: 1.35rem 1.25rem;
+      background: linear-gradient(155deg, rgba(22, 30, 44, 0.92) 0%, rgba(14, 18, 26, 0.98) 100%);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px -28px rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-aside::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 45%;
+      height: 42%;
+      background: radial-gradient(ellipse at 100% 0%, rgba(167, 139, 250, 0.12), transparent 70%);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    .hero-aside-kicker {
+      position: relative;
+      z-index: 1;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero-bento {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+    }
+
+    .bento {
+      border-radius: 12px;
+      padding: 0.95rem 1rem;
+      background: rgba(10, 14, 20, 0.45);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .bento:hover {
+      border-color: rgba(148, 163, 184, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .bento--span {
+      grid-column: 1 / -1;
+    }
+
+    .bento-quote {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.45;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    .bento-quote footer {
+      display: block;
+      margin-top: 0.65rem;
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .bento-stat {
+      margin: 0;
+    }
+
+    .bento-stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(120deg, #e0f2fe, #c4b5fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.25rem;
+    }
+
+    .bento-stat span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .bento-cert strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .bento-cert span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .bento-tools {
+      grid-column: 1 / -1;
+      padding: 0.75rem 1rem;
+    }
+
+    .bento-tools p {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .bento-tools ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.5rem;
+    }
+
+    .bento-tools li {
+      font-size: 0.8rem;
+      color: var(--text);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+    }
+
+    .hero-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1.35rem;
+    }
+
+    .hero-strip span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.28rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: rgba(10, 14, 20, 0.5);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.35rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border-color: var(--border);
+    }
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.35);
+    }
+
+    section {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-head {
+      margin-bottom: 2rem;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      max-width: 42rem;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .pillar {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .pillar:hover {
+      border-color: rgba(167, 139, 250, 0.25);
+      background: linear-gradient(160deg, var(--bg-panel), rgba(26, 34, 48, 0.85));
+    }
+
+    .pillar h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--accent-2);
+    }
+
+    .pillar p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.5rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      position: relative;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.45), rgba(167, 139, 250, 0.35), transparent);
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(148, 163, 184, 0.22);
+      box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.65);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.35rem;
+    }
+
+    .stack-list span {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      background: var(--bg-deep);
+      border-radius: 6px;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .timeline {
+      border-left: 2px solid var(--border);
+      margin-left: 0.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: calc(-1.5rem - 7px);
+      top: 0.35rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--bg-deep);
+    }
+
+    .tl-item h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .tl-meta {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .tl-item ul {
+      margin-left: 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .tl-item li {
+      margin-bottom: 0.35rem;
+    }
+
+    .creds {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .cred-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .cred-box strong {
+      color: var(--text);
+    }
+
+    .cred-box p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
+    }
+
+    #contact {
+      padding-bottom: 2rem;
+    }
+
+    .contact-card {
+      margin-top: 0.5rem;
+      padding: 1.35rem 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(26, 34, 48, 0.6), rgba(18, 24, 34, 0.85));
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-start;
+      max-width: 100%;
+    }
+
+    footer {
+      margin-top: 1.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footnote {
+      font-size: 0.82rem;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <header class="site">
+      <a class="brand" href="#">Sheena Tandon</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#initiatives">AI initiatives</a></li>
+          <li><a href="#automations">Ops automations</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="hero-badge">AI · Creative automation · Delivery leadership</p>
+            <h1 id="hero-title">Shipping <span class="hl">AI-assisted</span> workflows with governance built in</h1>
+            <p class="hero-lead">
+              I lead intake-to-launch programs where AI accelerates creative and operational work—always with human review before export, clear QA gates, and measurable flow on Jira and analytics stacks.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#initiatives">Explore initiatives</a>
+              <a class="btn btn-ghost" href="#contact">Get in touch</a>
+            </div>
+            <div class="hero-strip" aria-hidden="true">
+              <span>Intake</span>
+              <span>Human review</span>
+              <span>QA gates</span>
+              <span>Jira + BI</span>
+              <span>Handover</span>
+            </div>
+          </div>
+          <aside class="hero-aside" aria-label="Highlights">
+            <p class="hero-aside-kicker">At a glance</p>
+            <div class="hero-bento">
+              <blockquote class="bento bento--span bento-quote">
+                Creative automation only works when review, evidence, and handover are first-class—not bolted on at the end.
+                <footer>How I run programs</footer>
+              </blockquote>
+              <div class="bento bento-stat">
+                <strong>9+</strong>
+                <span>Years from engineering → regulated delivery → multi-vendor program lead</span>
+              </div>
+              <div class="bento bento-cert">
+                <strong>ISTQB Test Manager</strong>
+                <span>CTAL-TM · entry/exit criteria, release readiness, org quality</span>
+              </div>
+              <div class="bento bento-tools">
+                <p>Automation stack</p>
+                <ul>
+                  <li>Jira rules</li>
+                  <li>eazyBI</li>
+                  <li>Power BI</li>
+                  <li>TypeScript / React</li>
+                  <li>Python / FastAPI</li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="approach" aria-labelledby="approach-title">
+        <div class="section-head">
+          <h2 id="approach-title">How I lead AI and automation</h2>
+          <p>
+            Nine years from engineering through regulated consulting to multi-vendor program leadership—applied to creative pipelines: variants, approvals, deployment, and stakeholder-ready reporting.
+          </p>
+        </div>
+        <div class="pillars">
+          <article class="pillar">
+            <h3>Human-in-the-loop by design</h3>
+            <p>AI drafts and structured exports sit behind explicit review steps so teams keep creative and brand control before anything ships.</p>
+          </article>
+          <article class="pillar">
+            <h3>Repeatable creative ops</h3>
+            <p>Intake, iteration, vendor orchestration, and handover mirror product delivery—portable to listings, bundles, and campaign-ready assets.</p>
+          </article>
+          <article class="pillar">
+            <h3>Evidence and visibility</h3>
+            <p>ISTQB Test Manager rigor on entry/exit criteria, plus dashboards on delivery health, throughput, and RAID for portfolio and executive forums.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="initiatives" aria-labelledby="initiatives-title">
+        <div class="section-head">
+          <h2 id="initiatives-title">AI-assisted products and experiments</h2>
+          <p>
+            Side builds that practice the same rhythm as production creative automation: guided flows, shared prompts for maintainability, and guardrails around content.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="card-tag">Publishing pipeline</span>
+            <h3>KDP &amp; Etsy listings prep</h3>
+            <p>
+              Wizard from ideas through titles, keywords, interior notes, and design prompts to export-ready packages. AI-generated drafts with approval checkpoints before upload.
+            </p>
+            <div class="stack-list" aria-label="Technologies">
+              <span>TypeScript</span>
+              <span>React</span>
+              <span>Next.js</span>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-tag">Digital commerce</span>
+            <h3>Etsy digital builder (foundation)</h3>
+            <p>
+              Generate–edit–export loop for digital listings and bundles, with prompts kept in shared files so teams can evolve flows without brittle one-offs.
+            </p>
+            <div class="stack-list" aria-label="Technologies">
+              <span>Node</span>
+              <span>Express</span>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-tag">Personal productivity</span>
+            <h3>Investing notebook</h3>
+            <p>
+              Weekly review routine: watchlist, holdings, notes, and charts in a small full-stack app—patterning disciplined data intake and surfaced insight.
+            </p>
+            <div class="stack-list" aria-label="Technologies">
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>React</span>
+              <span>SQLite</span>
+              <span>Docker</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="automations" aria-labelledby="automations-title">
+        <div class="section-head">
+          <h2 id="automations-title">Platform automations and operating rhythm</h2>
+          <p>
+            Delivery operations automation aligned to how creative and growth teams already work: less manual chasing, clearer ownership, and self-serve leadership views.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="card-tag">Analytics</span>
+            <h3>eazyBI on Jira</h3>
+            <p>
+              Leadership views on delivery health, trends, throughput, and KPIs—so portfolio forums and executives can interrogate status without ad-hoc spreadsheet archaeology.
+            </p>
+            <div class="stack-list" aria-label="Tools">
+              <span>Jira</span>
+              <span>eazyBI</span>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-tag">Workflow</span>
+            <h3>Jira automation rules</h3>
+            <p>
+              Transitions, notifications, field hygiene, SLA-style nudges, and cross-item links—reducing coordination tax across matrixed, remote teams.
+            </p>
+            <div class="stack-list" aria-label="Tools">
+              <span>Jira automation</span>
+              <span>Confluence</span>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-tag">Reporting</span>
+            <h3>Power BI &amp; timesheet cadence</h3>
+            <p>
+              Dashboards for sprint/release, RAID, and decisions where stakeholders preferred Power BI; paired with a disciplined timesheet operating rhythm for finance and chargeability visibility.
+            </p>
+            <div class="stack-list" aria-label="Tools">
+              <span>Power BI</span>
+              <span>Azure DevOps</span>
+              <span>SharePoint</span>
+              <span>Teams</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-title">
+        <div class="section-head">
+          <h2 id="experience-title">Roles that ground the automation story</h2>
+          <p>
+            Program ownership from scope to go-live—suited to staged creative automation with sign-offs, vendor sequencing, and operational handover.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <h3>LTIMindtree — Project Lead</h3>
+            <p class="tl-meta">Canada · June 2026 – Present</p>
+            <ul>
+              <li>Leads programs scope-to-go-live: prioritization, design alignment, build, QA, and controlled launch.</li>
+              <li>RAID, dependencies, documented trade-offs; integration checkpoints and defect triage to launch targets.</li>
+              <li>QA orchestration with partners: entry/exit criteria, readiness forums, evidence-backed release recommendations.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <h3>Ideological Group — Project Manager, Digital &amp; Workforce Technology</h3>
+            <p class="tl-meta">Markham, ON · May 2024 – May 2026</p>
+            <ul>
+              <li>Owned digital and workforce programs end to end: milestones, dependencies, RAID, executive status.</li>
+              <li>Sprint/release cadence with product, engineering, and operations; gate criteria and sign-offs across QA and ops.</li>
+              <li>Power BI, eazyBI-on-Jira, Azure DevOps, Jira, SharePoint, Teams; portfolio forums and mentoring distributed teams.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <h3>TestingXperts (WaspBarcode) — Project Lead</h3>
+            <p class="tl-meta">Remote · Aug 2021 – Jan 2024</p>
+            <ul>
+              <li>Parallel programs: inventory, asset tracking, POS integrations; multi-vendor dependency maps and sequencing.</li>
+              <li>Release readiness: test alignment, defect discipline, and evidence for go/no-go through client reporting.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <h3>Seasia Infotech (BD) — Software Consultant</h3>
+            <p class="tl-meta">India · May 2019 – Aug 2021</p>
+            <ul>
+              <li>Regulated healthcare delivery: documentation, traceability, controlled releases—parallel to brand, legal, and platform guardrails in creative ops.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <h3>Tech Mahindra (AT&amp;T) — Software Engineer</h3>
+            <p class="tl-meta">India · Aug 2016 – Apr 2019</p>
+            <ul>
+              <li>Enterprise software with unit/integration testing, defect analysis, and cross-site release coordination.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="credentials" aria-labelledby="credentials-title">
+        <div class="section-head">
+          <h2 id="credentials-title">Credentials &amp; education</h2>
+          <p>Certifications and degrees that reinforce quality governance and technical depth behind automation programs.</p>
+        </div>
+        <div class="creds">
+          <div class="cred-box">
+            <strong>ISTQB Advanced Level — Test Manager (CTAL-TM)</strong>
+            <p>Test planning, monitoring, organizational quality, and release readiness—applied to AI-assisted and creative automation launches.</p>
+          </div>
+          <div class="cred-box">
+            <strong>ISTQB Foundation · Scrum Fundamentals (SFC)</strong>
+            <p>Shared language with engineering and QA for hybrid and Scrum delivery.</p>
+          </div>
+          <div class="cred-box">
+            <strong>MCA · BSc Computer Science</strong>
+            <p>Indira Gandhi National Open University (MCA, 2017–2021) · Kurukshetra University (BSc, 2013–2016).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="section-head">
+          <h2 id="contact-title">Contact</h2>
+          <p>Cambridge, Ontario, Canada (remote). Reach out to discuss AI creative automation, delivery governance, or program leadership.</p>
+        </div>
+        <div class="contact-card">
+          <a class="btn btn-primary" href="mailto:sheenachugh92@gmail.com">sheenachugh92@gmail.com</a>
+          <p class="footnote" style="margin: 0;">
+            This site highlights AI initiatives and automations only—no resume or cover letter downloads.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="y"></span> Sheena Tandon</span>
+      <span class="footnote">Built as a static portfolio page.</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
